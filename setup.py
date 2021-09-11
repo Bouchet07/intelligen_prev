@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.2'
+VERSION = '0.3'
 DESCRIPTION = 'Math and artificial intelligence tools'
 
 # Setting up
