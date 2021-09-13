@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.3'
+VERSION = '0.4'
 DESCRIPTION = 'Math and artificial intelligence tools'
 
 # Setting up
@@ -10,7 +10,7 @@ setup(
     author="Bouchet07 (Diego Bouchet)",
     description=DESCRIPTION,
     packages=find_packages(),
-    install_requires=['numpy'],
+    install_requires=['numpy', 'matplotlib'],
     keywords=['python', 'AI', 'math', 'artificial', 'intelligence'],
     classifiers=[
         "Development Status :: 1 - Planning",
