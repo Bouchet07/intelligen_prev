@@ -1,6 +1,8 @@
 import numpy as np
 
 def lagrange(X, Y):
+    if type(X) == list:
+        X = np.array(X)  
 
     def lagran(x):
         if type(x) == 'numpy.ndarray':
@@ -13,11 +15,11 @@ def lagrange(X, Y):
             x = np.array([x]).reshape(-1, 1)
 
         out = 0
-        for xi, yi in zip(X, Y):
+        for i in range(len(X)):
             #pi_x = (x - np.array([(X[X != xi]).reshape(-1)] * len(x))) because X[X != xi] autoreshape (-1)
-            pi_x = x - np.array([(X[X != xi])] * len(x))
+            pi_x = x - np.array([(X[X != X[i]])] * len(x))
 
-            out += yi * (pi_x / (xi - X[X != xi])).prod(axis = 1)
+            out += Y[i] * (pi_x / (X[i] - X[X != X[i]])).prod(axis = 1)
 
         return out
     
@@ -30,7 +32,7 @@ def main() -> None:
     Y = np.array([ 4, 2, 3, -2, 6, 6])
     Y = np.concatenate((Y, Y+1))
 
-    _x = np.linspace(min(X),max(X),1000)
+    _x = np.linspace(min(X),max(X),100000)
 
 
     Lagran = lagrange(X.reshape(-1, 1),Y.reshape(-1, 1))
