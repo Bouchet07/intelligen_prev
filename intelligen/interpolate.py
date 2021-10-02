@@ -1,10 +1,23 @@
+from typing import Callable, List
+Vector = List[float]
+
 import numpy as np
 
-def lagrange(X, Y):
+def lagrange(X: Vector, Y: Vector) -> Callable[[Vector], Vector]:
+    """Returns the lagrange interpolation
+
+    Args:
+        X (Vector): X-data
+        Y (Vector): Y-data
+
+    Returns:
+        Callable[[Vector], Vector]: returns the function that evaluates the lagrange interpolation
+    """
     if type(X) == list:
         X = np.array(X)  
 
     def lagran(x):
+        # Checks the input's type
         if type(x) == 'numpy.ndarray':
             x = x.reshape(-1, 1)
         
@@ -32,7 +45,7 @@ def main() -> None:
     Y = np.array([ 4, 2, 3, -2, 6, 6])
     Y = np.concatenate((Y, Y+1))
 
-    _x = np.linspace(min(X),max(X),100000)
+    _x = np.linspace(min(X),max(X),1000)
 
 
     Lagran = lagrange(X.reshape(-1, 1),Y.reshape(-1, 1))
